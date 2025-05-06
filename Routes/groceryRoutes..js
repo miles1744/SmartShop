@@ -1,5 +1,5 @@
 const { Router } = require("express");
-const groceryController = require("../controller/groceryController");
+const groceryController = require("../controllers/groceryController");
 const usersRouter = Router();
 
 usersRouter.get("/", usersController.usersListGet);
