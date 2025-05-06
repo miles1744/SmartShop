@@ -19,11 +19,11 @@ async function insertGroceries(item) {
     await pool.query("INSERT INTO groceries (item) VALUES ($1)", [item]);
 }
 
-async function deleteUsers() {
+async function deleteItem() {
     await pool.query("DELETE FROM groceries")
 }
 
-async function getMessageById(id) {
+async function getItemById(id) {
     const result = await pool.query("SELECT * FROM groceries WHERE id = $1", [id]);
     return result.rows
 }
@@ -31,6 +31,6 @@ async function getMessageById(id) {
 module.exports = {
     getAllGroceries,
     insertGroceries,
-    deleteUsers,
-    getMessageById
+    deleteItem,
+    getItemById
 };
