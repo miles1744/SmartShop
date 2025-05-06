@@ -1,7 +1,8 @@
 const express = require("express");
 const app = express();
 const groceryRoutes = require("./routes/groceryRoutes");
-const cors = require("cors")
+const cors = require("cors");
+
 const corsOptions = {
     origin:["https://localhost:5173"],
 };
