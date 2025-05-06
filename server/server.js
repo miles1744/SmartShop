@@ -1,6 +1,13 @@
 const express = require("express");
 const app = express();
-const groceryRoutes = require("./Routes/groceryRoutes");
+const groceryRoutes = require("./routes/groceryRoutes");
+const cors = require("cors")
+const corsOptions = {
+    origin:["https://localhost:5173"],
+};
+
+app.use(cors(corsOptions));
+
 
 app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: true }));
