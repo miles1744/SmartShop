@@ -1,12 +1,12 @@
 const { Router } = require("express");
 const groceryController = require("../controllers/groceryController");
-const usersRouter = Router();
+const groceriesRouter = Router();
 
-usersRouter.get("/", groceryController.usersListGet);
-usersRouter.get("/:id", groceryController.getItemById);
-usersRouter.get("/new", groceryController.usersNewGet);
-usersRouter.post("/new", groceryController.usersNewPost);
-usersRouter.post("/delete", groceryController.deleteUsers)
+groceriesRouter.get("/", groceryController.usersListGet);
+groceriesRouter.get("/:id", groceryController.getItemById);
+groceriesRouter.get("/new", groceryController.usersNewGet);
+groceriesRouter.post("/new", groceryController.usersNewPost);
+groceriesRouter.post("/delete", groceryController.deleteUsers)
 
 
-module.exports = usersRouter;
+module.exports = groceriesRouter;
