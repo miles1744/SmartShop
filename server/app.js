@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const groceryRoutes = require("./routes/groceryRoutes");
+const groceryRoutes = require("./Routes/groceryRoutes");
 
 app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: true }));
