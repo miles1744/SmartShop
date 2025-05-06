@@ -6,7 +6,7 @@ groceriesRouter.get("/", groceryController.usersListGet);
 groceriesRouter.get("/:id", groceryController.getItemById);
 groceriesRouter.get("/new", groceryController.usersNewGet);
 groceriesRouter.post("/new", groceryController.usersNewPost);
-groceriesRouter.post("/delete", groceryController.deleteUsers)
+groceriesRouter.post("/delete", groceryController.deleteItem)
 
 
 module.exports = groceriesRouter;
