@@ -48,7 +48,7 @@ async function insertGroceries(item) {
 
 async function deleteGrocery(name) {
       await pool.query(
-        `DELETE FROM Item WHERE name ILIKE $1`,
+        `DELETE FROM groceries WHERE name ILIKE $1`,
         [name]
       );
   }
