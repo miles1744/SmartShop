@@ -3,8 +3,8 @@ const db = require("../db/queries.js")
 
 exports.usersListGet = async (req, res) => {
     const { search } = req.query;
-    const usernames = await db.getAllGroceries(search);
-    res.render("index", { usernames }); // change this route using react
+    const items = await db.getAllGroceries(search);
+    res.json(items);
 }
 
 exports.usersNewGet = async (req, res) => {
@@ -16,16 +16,15 @@ exports.getItemById = async (req, res) =>{
     const id = parseInt(req.params.id);
 
     try {
-        const messages = await db.getItemById(id); 
-        const message = messages[0];
+        const items = await db.getItemById(id); 
+        const item = items[0];
 
-        if (!message) {
+        if (!item) {
             return res.status(404).send("Message not found");
         }
 
         res.render("message", {
-            title: "Mini Message Board",
-            message
+            item
         });
     } 
     
