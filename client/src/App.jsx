@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom';
 
 
 const App = () => {
@@ -14,10 +15,14 @@ const App = () => {
     <>
       <h1> 🛒 Smart Shop </h1>
       <p> Track your groceries and items and style and precision. </p>
-      <button>Manage Categories</button>
-      <button>View All Items</button>
+      <Link to="/categories">
+        <button>Manage Categories</button>
+      </Link>
+      <Link to="/groceries">
+        <button>View All Items</button>
+      </Link>
       <form>
-        <input value={searchTerm} onChange={(e) => {setSearch(e.target.value)}}/>s
+        <input value={searchTerm} onChange={(e) => {setSearch(e.target.value)}}/>
       </form>
     </>
   )
