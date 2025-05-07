@@ -46,9 +46,31 @@ async function insertGroceries(item) {
     await pool.query("INSERT INTO groceries (item) VALUES ($1)", [item]);
 }
 
-async function deleteItem() {
-    await pool.query("DELETE FROM groceries")
-}
+async function deleteGrocery(name) {
+    try {
+      await pool.query(
+        `DELETE FROM Item WHERE name ILIKE $1`,
+        [name]
+      );
+      console.log(`${name} item(s) deleted`);
+    } catch (err) {
+      console.error("Error deleting item:", err);
+    }
+  }
+  
+  async function deleteCategory(name) {
+    try {
+      await pool.query(
+        `DELETE FROM Category WHERE name ILIKE $1`,
+        [name]
+      );
+      console.log(`${name} category deleted (with all related items)`);
+    } catch (err) {
+      console.error("Error deleting category:", err);
+    }
+  }
+  
+
 
 async function getItemById(id) {
     const result = await pool.query("SELECT * FROM groceries WHERE id = $1", [id]);
