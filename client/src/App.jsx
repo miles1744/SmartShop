@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react'
 
-import './App.css'
 
 const App = () => {
   const [searchTerm, setSearchTerm] = useState("")
@@ -15,10 +14,10 @@ const App = () => {
     <>
       <h1> 🛒 Smart Shop </h1>
       <p> Track your groceries and items and style and precision. </p>
-      <button onClick={}>Manage Categories</button>
-      <button onClick={}>View All Items</button>
+      <button>Manage Categories</button>
+      <button>View All Items</button>
       <form>
-        <input value={searchTerm} onChange={(e) => {setSearch(e.target.value)}}
+        <input value={searchTerm} onChange={(e) => {setSearch(e.target.value)}}/>s
       </form>
     </>
   )
