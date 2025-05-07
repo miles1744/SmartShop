@@ -1,6 +1,8 @@
 const db = require("../db/queries.js")
 
 
+exports.CategoriesAndGroceriesListGet = async (req, res) => {}
+
 exports.groceryListGet = async (req, res) => {
     const items = await db.getAllGroceries();
     res.json(items);

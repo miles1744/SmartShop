@@ -1,10 +1,17 @@
 import { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+
+
+
 
 
 const App = () => {
   const [searchTerm, setSearchTerm] = useState("")
+  const navigate = useNavigate();
 
+  const handleSearch = () => {
+    navigate(`/search?term=${encodeURIComponent(searchTerm)}`);
+  };
 
   const fetchAPI = async () => {
     const response = await axios.get("http://localhost:3000")
@@ -21,8 +28,12 @@ const App = () => {
       <Link to="/groceries">
         <button>View All Items</button>
       </Link>
-      <form>
-        <input value={searchTerm} onChange={(e) => {setSearch(e.target.value)}}/>
+      <form onSubmit={(e) => {
+        e.preventDefault();
+        handleSearch();
+      }}>
+        <input value={searchTerm} onChange={(e) => {setSearchTerm(e.target.value)}}/>
+        <button type="submit">Search</button>
       </form>
     </>
   )
