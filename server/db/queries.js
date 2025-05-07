@@ -47,27 +47,17 @@ async function insertGroceries(item) {
 }
 
 async function deleteGrocery(name) {
-    try {
       await pool.query(
         `DELETE FROM Item WHERE name ILIKE $1`,
         [name]
       );
-      console.log(`${name} item(s) deleted`);
-    } catch (err) {
-      console.error("Error deleting item:", err);
-    }
   }
   
   async function deleteCategory(name) {
-    try {
       await pool.query(
-        `DELETE FROM Category WHERE name ILIKE $1`,
+        `DELETE FROM categories WHERE name ILIKE $1`,
         [name]
-      );
-      console.log(`${name} category deleted (with all related items)`);
-    } catch (err) {
-      console.error("Error deleting category:", err);
-    }
+      )
   }
   
 
@@ -80,8 +70,9 @@ async function getItemById(id) {
 module.exports = {
     getAllGroceries,
     insertGroceries,
-    deleteItem,
+    deleteCategory,
     getItemById,
     getAllCategories,
-    getCatergoriesAndGroceries
+    getCatergoriesAndGroceries,
+    deleteGrocery
 };

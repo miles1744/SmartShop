@@ -12,7 +12,7 @@ exports.categoriesListGet = async (req, res) => {
 }
 
 exports.usersNewGet = async (req, res) => {
-    res.render("new") // change this route using react
+    res.render("new") 
 }
 
 exports.getItemById = async (req, res) =>{
