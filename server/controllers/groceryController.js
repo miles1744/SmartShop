@@ -1,7 +1,21 @@
 const db = require("../db/queries.js")
 
 
-exports.CategoriesAndGroceriesListGet = async (req, res) => {}
+exports.CategoriesAndGroceriesListGet = async (req, res) => {
+    const { term } = req.query;
+
+    if (!term) {
+      return res.status(400).json({ error: "Search term is required" });
+    }
+  
+    try {
+      const items = await db.searchGroceries(term);
+      res.json(items);
+    } catch (err) {
+      console.error("Error in /search route:", err);
+      res.status(500).json({ error: "Internal server error" });
+    }
+}
 
 exports.groceryListGet = async (req, res) => {
     const items = await db.getAllGroceries();
