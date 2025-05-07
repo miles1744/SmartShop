@@ -1,9 +1,13 @@
 const db = require("../db/queries.js")
 
 
-exports.usersListGet = async (req, res) => {
-    const { search } = req.query;
-    const items = await db.getAllGroceries(search);
+exports.groceryListGet = async (req, res) => {
+    const items = await db.getAllGroceries();
+    res.json(items);
+}
+
+exports.categoriesListGet = async (req, res) => {
+    const items = await db.getAllCategories();
     res.json(items);
 }
 

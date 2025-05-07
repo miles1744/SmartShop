@@ -1,18 +1,45 @@
 const pool = require("./pool")
 
-async function getAllGroceries(searchTerm) {
-    if (searchTerm){
-        const { rows } = await pool.query(
-            "SELECT * FROM groceries WHERE item ILIKE $1",
-            [`%${searchTerm}%`]
-        );
-        return rows;
-    }
+async function getAllGroceries(){
+    const {rows} = await pool.query(
+        "SELECT * FROM groceries"
+    )
+    return rows
+}
 
-    else {
-        const { rows } = await pool.query("SELECT * FROM groceries");
-        return rows 
-    }
+
+
+async function getAllCategories(){
+    const { rows } = await pool.query(
+        "SELECT * FROM categories"
+    )
+    return rows
+}
+
+async function getCatergoriesAndGroceries(searchTerm) {
+
+const categoryMatch = await pool.query(
+    `SELECT DISTINCT category FROM groceries WHERE category ILIKE $1`,
+    [searchTerm]
+  );
+  
+  if (categoryMatch.rows.length > 0) {
+
+    const { rows } = await pool.query(
+      `SELECT * FROM groceries WHERE category ILIKE $1`,
+      [searchTerm]
+    );
+    return rows;
+  } 
+  
+  else {
+    const { rows } = await pool.query(
+      `SELECT * FROM groceries WHERE item ILIKE $1`,
+      [`%${searchTerm}%`]
+    );
+    return rows;
+  }
+  
 }
 
 async function insertGroceries(item) {
@@ -32,5 +59,7 @@ module.exports = {
     getAllGroceries,
     insertGroceries,
     deleteItem,
-    getItemById
+    getItemById,
+    getAllCategories,
+    getCatergoriesAndGroceries
 };
