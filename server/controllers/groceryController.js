@@ -9,7 +9,7 @@ exports.CategoriesAndGroceriesListGet = async (req, res) => {
     }
   
     try {
-      const items = await db.searchGroceries(term);
+      const items = await db.getCatergoriesAndGroceries(term);
       res.json(items);
     } catch (err) {
       console.error("Error in /search route:", err);
