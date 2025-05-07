@@ -3,6 +3,8 @@ import { useState, useEffect } from 'react'
 import './App.css'
 
 const App = () => {
+  const [searchTerm, setSearchTerm] = useState("")
+
 
   const fetchAPI = async () => {
     const response = await axios.get("http://localhost:3000")
@@ -16,7 +18,7 @@ const App = () => {
       <button onClick={}>Manage Categories</button>
       <button onClick={}>View All Items</button>
       <form>
-        <input value={}
+        <input value={searchTerm} onChange={(e) => {setSearch(e.target.value)}}
       </form>
     </>
   )
