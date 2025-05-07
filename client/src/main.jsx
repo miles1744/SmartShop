@@ -4,7 +4,7 @@ import App from './App.jsx'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import CategoriesList from "./CategoriesList.jsx";
 import GroceryList from "./GroceryList.jsx";
-import searchInfo from './SearchInfo.jsx'
+import SearchInfo from './SearchInfo.jsx'
 
 
 
@@ -15,7 +15,7 @@ createRoot(document.getElementById('root')).render(
         <Route path="/" element={<App />}></Route>
         <Route path="/categories" element={<CategoriesList />}></Route>
         <Route path="/groceries" element={<GroceryList />}></Route>
-        <Route path="/search" element={<searchInfo />}></Route>
+        <Route path="/search" element={<SearchInfo />}></Route>
       </Routes>
     </BrowserRouter>
   </StrictMode>,
