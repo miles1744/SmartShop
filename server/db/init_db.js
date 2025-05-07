@@ -1,8 +1,12 @@
-
-
 const { Client } = require("pg");
 
 const SQL = `
+
+CREATE TABLE IF NOT EXISTS categories (
+    id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+    name VARCHAR(255) NOT NULL,
+    description VARCHAR(255) NOT NULL
+);
 
 CREATE TABLE IF NOT EXISTS groceries (
     id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
@@ -12,41 +16,41 @@ CREATE TABLE IF NOT EXISTS groceries (
     categoryid INTEGER REFERENCES categories(id)
 );
 
-CREATE TABLE IF NOT EXISTS categories (
-    id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
-    name VARCHAR(255) NOT NULL,
-    description VARCHAR(255) NOT NULL,
-);
-
-INSERT INTO categories (name)
+-- Insert categories with both name and description
+INSERT INTO categories (name, description)
 VALUES 
-    ('dairy'),
-    ('grain');
+    ('dairy', 'Milk, cheese, yogurt, and other dairy products'),
+    ('grain', 'Bread, rice, pasta, and cereal products');
 
+-- Insert groceries referencing valid category IDs
 INSERT INTO groceries (item, price, quantity, categoryid)
 VALUES
     ('Vital Farms Pasture-Raised Large Eggs', 5.92, 100, 1),
     ('Horizon Organic Whole Milk', 5.49, 100, 1),
     ('Nature''s Own Butterbread Bread', 3.42, 100, 2);
+
 `;
 
 async function main() {
-
-    console.log("seeding...")
+    console.log("Seeding...");
 
     const client = new Client({
         user: process.env.DB_USER,
         password: process.env.DB_PASSWORD,
         host: process.env.DB_HOST,
         port: process.env.DB_PORT,
-        database: process.env.DB_NAME,
+        database: process.env.DB_NAME
     });
 
     await client.connect();
-    await client.query(SQL);
+    try {
+        await client.query(SQL);
+        console.log("Done seeding!");
+      } catch (err) {
+        console.error("❌ Error during seeding:", err);
+      }
+      
     await client.end();
-
-    console.log("done")
 }
 
 main();

@@ -10,7 +10,6 @@ const corsOptions = {
 app.use(cors(corsOptions));
 
 
-app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: true }));
 app.use("/", groceryRoutes);
 
