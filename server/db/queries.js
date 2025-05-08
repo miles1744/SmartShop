@@ -17,30 +17,35 @@ async function getAllCategories(){
 }
 
 async function getCatergoriesAndGroceries(searchTerm) {
-
-const categoryMatch = await pool.query(
-    `SELECT DISTINCT category FROM groceries WHERE category ILIKE $1`,
+  const categoryMatch = await pool.query(
+    `SELECT id FROM categories WHERE name ILIKE $1`,
     [searchTerm]
   );
-  
+
   if (categoryMatch.rows.length > 0) {
+    const categoryId = categoryMatch.rows[0].id;
 
     const { rows } = await pool.query(
-      `SELECT * FROM groceries WHERE category ILIKE $1`,
-      [searchTerm]
+      `SELECT groceries.*, categories.name AS category
+       FROM groceries
+       JOIN categories ON groceries.categoryid = categories.id
+       WHERE groceries.categoryid = $1`,
+      [categoryId]
     );
+
     return rows;
-  } 
-  
-  else {
+  } else {
     const { rows } = await pool.query(
-      `SELECT * FROM groceries WHERE item ILIKE $1`,
+      `SELECT groceries.*, categories.name AS category
+       FROM groceries
+       JOIN categories ON groceries.categoryid = categories.id
+       WHERE groceries.item ILIKE $1`,
       [`%${searchTerm}%`]
     );
     return rows;
   }
-  
 }
+
 
 async function insertGroceries(item) {
     await pool.query("INSERT INTO groceries (item) VALUES ($1)", [item]);
