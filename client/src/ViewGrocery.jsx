@@ -29,8 +29,8 @@ const ViewGrocery = () => {
       <div className="grocery-detail">
         <h1>Item: {grocery.item}</h1>
         <p>Price: ${grocery.price}</p>
-        <p>Quantity: ${grocery.quantity}</p>
-        
+        <p>Quantity: {grocery.quantity}</p>
+
       </div>
 
       <Link to="/">

@@ -50,11 +50,6 @@ const SearchInfo = () => {
                     {categories.map((category, index) => (
                     <div key={index} className="category-card">
                         <h4>{category}</h4>
-                        <div className="options-bar"> 
-                            <p className="view">View</p>
-                            <p className="edit">Edit</p>
-                            <p className="delete">Delete</p>
-                        </div>
                     </div>
                 ))}
             </div>
@@ -72,11 +67,6 @@ const SearchInfo = () => {
                     {items.map((item, index) => (
                         <div key={index} className="item-card">
                             <h4>{item}</h4>
-                        <div className="options-bar"> 
-                            <p className="view">View</p>
-                            <p className="edit">Edit</p>
-                            <p className="delete">Delete</p>
-                        </div>
                         </div>
                     ))}
                 </div>
