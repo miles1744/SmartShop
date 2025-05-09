@@ -54,7 +54,7 @@ const UpdateGrocery = () => {
   };
 
   return (
-    <div>
+    <div className="update-container">
         <h1>Update Grocery</h1>
         <form onSubmit={handleSubmit} className="grocery-form">
             <label>Item:</label>
