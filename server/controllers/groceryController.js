@@ -60,12 +60,6 @@ exports.usersNewPost = async (req, res) => {
     res.redirect("/");
 }
 
-exports.deleteItem = async(req, res) => {
-    await db.deleteUsers();
-    res.redirect("/");
-
-}
-
 
 exports.insertGroceries = async (req, res) => {
 
