@@ -62,10 +62,10 @@ async function insertCategories(name, description) {
   );
 }
 
-async function deleteGrocery(name) {
+async function deleteGrocery(id) {
       await pool.query(
-        `DELETE FROM groceries WHERE name ILIKE $1`,
-        [name]
+        `DELETE FROM groceries WHERE id = $1`,
+        [id]
       );
   }
   
@@ -75,13 +75,14 @@ async function deleteGrocery(name) {
         [id]
       )
   }
+
   
 
 
-async function getItemById(id) {
-    const result = await pool.query("SELECT * FROM groceries WHERE id = $1", [id]);
-    return result.rows
-}
+  async function getItemById(id) {
+      const result = await pool.query("SELECT * FROM groceries WHERE id = $1", [id]);
+      return result.rows
+  }
 
 module.exports = {
     getAllGroceries,
