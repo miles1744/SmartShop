@@ -114,4 +114,22 @@ console.log("Extracted fields:", item, price, quantity, categoryid);
       res.status(500).json({ error: "Server error" });
     }
   };
+
+
+  exports.deleteGroceries = async (req, res) => {
+    const { id } = req.body;
+  
+    if (!id) {
+      return res.status(400).json({ error: "Grocery name required" });
+    }
+  
+    try {
+      await db.deleteGrocery(id);
+      res.status(200).json({ message: "Grocery deleted" });
+    } catch (err) {
+      console.error("Error deleting grocery:", err);
+      res.status(500).json({ error: "Server error" });
+    }
+  };
+  
   
