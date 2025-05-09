@@ -85,4 +85,22 @@ console.log("Extracted fields:", item, price, quantity, categoryid);
       res.status(500).json({ error: "Internal Server Error" });
     }
   };
+
+  exports.insertCategories = async (req, res) => {
+        const { name, description } = req.body.newCategory;
+        console.log("Extracted fields:", name, description);
+    
+    
+        if (!name || !description) {
+          return res.status(400).json({ error: "Missing required fields" });
+        }
+      
+        try {
+          await db.insertGroceries(name, description);
+          res.status(201).json({ message: "Grocery item inserted successfully!" });
+        } catch (err) {
+          console.error("Error inserting grocery:", err);
+          res.status(500).json({ error: "Internal Server Error" });
+        }
+  }
   

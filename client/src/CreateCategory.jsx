@@ -33,7 +33,7 @@ const handleSubmit = async (e) => {
     return (
         <div className="Create-Category-Container">
             <h1>Create a Category</h1>
-            <form>
+            <form onSubmit={handleSubmit}>
                 <div>
                     <label>Name:</label>
                     <input type="text" name="name" onChange={(e) => {setName(e.target.value)}} value={name} placeholder="Write the name" required/>

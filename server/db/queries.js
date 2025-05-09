@@ -54,6 +54,14 @@ async function insertGroceries(item, price, quantity, categoryid) {
   );
 }
 
+
+async function insertCategories(name, description) {
+  await pool.query(
+    "INSERT INTO categories (name, description) VALUES ($1, $2)",
+    [name, description]
+  );
+}
+
 async function deleteGrocery(name) {
       await pool.query(
         `DELETE FROM groceries WHERE name ILIKE $1`,
@@ -82,5 +90,6 @@ module.exports = {
     getItemById,
     getAllCategories,
     getCatergoriesAndGroceries,
+    insertCategories,
     deleteGrocery
 };

@@ -7,6 +7,7 @@ groceriesRouter.get("/categories", groceryController.categoriesListGet);
 groceriesRouter.get("/groceries", groceryController.groceryListGet)
 groceriesRouter.get("/search", groceryController.CategoriesAndGroceriesListGet)
 groceriesRouter.post("/groceries/new", groceryController.insertGroceries);
+groceriesRouter.post("/categories/new", groceryController.insertCategories);
 groceriesRouter.post("/delete", groceryController.deleteItem)
 
 
