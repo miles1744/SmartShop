@@ -9,6 +9,8 @@ groceriesRouter.get("/search", groceryController.CategoriesAndGroceriesListGet)
 groceriesRouter.post("/groceries/new", groceryController.insertGroceries);
 groceriesRouter.post("/categories/new", groceryController.insertCategories);
 groceriesRouter.post("/categories", groceryController.deleteCategory);
+groceriesRouter.post("/groceries", groceryController.groceryListGet)
+
 
 
 module.exports = groceriesRouter;
