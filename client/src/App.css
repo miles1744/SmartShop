@@ -532,3 +532,7 @@ select {
     transition: 0.25s border;
 }
 
+.update-container {
+    text-align: center;
+    color: rgb(39, 55, 77);
+}
