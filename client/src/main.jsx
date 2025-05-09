@@ -7,7 +7,7 @@ import GroceryList from "./GroceryList.jsx";
 import SearchInfo from './SearchInfo.jsx';
 import CreateCategory from './CreateCategory.jsx';
 import CreateGrocery from './CreateGrocery.jsx';
-import ViewCateogry from './ViewCateogry.jsx';
+import ViewCategory from './ViewCategory.jsx';
 import ViewGrocery from './ViewGrocery.jsx';
 
 
@@ -22,7 +22,7 @@ createRoot(document.getElementById('root')).render(
         <Route path="/search" element={<SearchInfo />} />
         <Route path="/categories/new" element={<CreateCategory />} />
         <Route path="/groceries/new" element={<CreateGrocery />} />
-        <Route path="/categories/:id" element={<ViewCateogry />} />
+        <Route path="/categories/:id" element={<ViewCategory />} />
         <Route path="/groceries/:id" element={<ViewGrocery />} />
 
       </Routes>

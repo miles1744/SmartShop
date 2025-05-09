@@ -27,34 +27,28 @@ exports.categoriesListGet = async (req, res) => {
     res.json(items);
 }
 
-exports.getCategoryById = async (req, res) =>{
+exports.getCategoryById = async (req, res) => {
+  const id = parseInt(req.params.id);
 
-    const id = parseInt(req.params.id);
+  try {
+    const item = await db.getCategoryById(id);
 
-    try {
-        const items = await db.getCategoryById(id); 
-        const item = items[0];
-
-        if (!item) {
-            return res.status(404).send("Message not found");
-        }
-
-        res.render("message", {
-            item
-        });
-    } 
-    
-    catch (err) {
-        console.error("Error fetching message:", err);
-        res.status(500).send("Server error");
+    if (!item) {
+      return res.status(404).json({ error: "Category not found" });
     }
-}
+
+    res.json(item);
+  } catch (err) {
+    console.error("Error fetching category:", err);
+    res.status(500).json({ error: "Server error" });
+  }
+};
 
 
 
 exports.insertGroceries = async (req, res) => {
 
-    const { item, price, quantity, categoryid } = req.body.newGrocery;
+  const { item, price, quantity, categoryid } = req.body;
 console.log("Extracted fields:", item, price, quantity, categoryid);
 
 
@@ -72,8 +66,8 @@ console.log("Extracted fields:", item, price, quantity, categoryid);
   };
 
   exports.insertCategories = async (req, res) => {
-        const { name, description } = req.body.newCategory;
-        console.log("Extracted fields:", name, description);
+    const { name, description } = req.body;
+    console.log("Extracted fields:", name, description);
     
     
         if (!name || !description) {

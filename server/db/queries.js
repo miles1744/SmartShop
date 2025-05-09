@@ -76,13 +76,14 @@ async function deleteGrocery(id) {
       )
   }
 
-  
 
 
-  async function getCategoryById(id) {
-      const result = await pool.query("SELECT * FROM categories WHERE id = $1", [id]);
-      return result.rows
-  }
+
+async function getCategoryById(id) {
+  const result = await pool.query("SELECT * FROM categories WHERE id = $1", [id]);
+  return result.rows[0]; // ✅ only return the object, not an array
+}
+
 
 module.exports = {
     getAllGroceries,
