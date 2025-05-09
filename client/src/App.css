@@ -441,9 +441,6 @@ textarea {
     color: rgb(39, 55, 77);
 }
 
-.Create-Grocery-Container input::placeholder{
-    color: rgb(39, 55, 77);
-}
 
 .Create-Grocery-Container form button{
     padding: 15px;
@@ -514,3 +511,24 @@ select {
 .grocery-form input:focus{
     border: 2px solid rgb(39, 55, 77);  
 }
+
+.grocery-form input::placeholder{
+    color: rgb(39, 55, 77);
+}
+
+.grocery-form select{
+    background-color: rgb(221, 230, 237);
+
+    color: rgb(39, 55, 77);
+}
+
+.grocery-form button{
+    padding: 15px;
+    font-size: 24px;
+    border: none;
+    border-radius: 15px;
+    color: rgb(39, 55, 77);
+    background-color: rgb(221, 230, 237);
+    transition: 0.25s border;
+}
+
