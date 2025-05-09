@@ -14,12 +14,13 @@ createRoot(document.getElementById('root')).render(
   <StrictMode>
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<App />}></Route>
-        <Route path="/categories" element={<CategoriesList />}></Route>
-        <Route path="/groceries" element={<GroceryList />}></Route>
-        <Route path="/search" element={<SearchInfo />}></Route>
-        <Route path="/categories/new" element={<CreateCategory />}></Route>
-        <Route path="/groceries/new" element={<CreateGrocery />}></Route>
+        <Route path="/" element={<App />} />
+        <Route path="/categories" element={<CategoriesList />} />
+        <Route path="/groceries" element={<GroceryList />} />
+        <Route path="/search" element={<SearchInfo />} />
+        <Route path="/categories/new" element={<CreateCategory />} />
+        <Route path="/groceries/new" element={<CreateGrocery />} />
+        <Route path="/categories/:id" element={<ViewCategory />} />
       </Routes>
     </BrowserRouter>
   </StrictMode>,
