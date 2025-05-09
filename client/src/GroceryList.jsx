@@ -40,6 +40,10 @@ const GroceryList = () => {
         navigate(`/groceries/${groceryId}`);
       };
 
+      const handleUpdate = (groceryId) => {
+        navigate(`/groceries/update/${groceryId}`);
+      };
+
       return (<div className="grocery-container">
 
         <h1>Groceries</h1>
@@ -52,7 +56,7 @@ const GroceryList = () => {
 
                         <div className="options-bar"> 
                             <p className="view" onClick={() => handleView(grocery.id)}>View</p>
-                            <p className="edit">Edit</p>
+                            <p className="edit" onClick={() => handleUpdate(grocery.id)}>Edit</p>
                             <p className="delete" onClick={() => handleDelete(grocery.id)}>Delete</p>
                         </div>
                     </div>

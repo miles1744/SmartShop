@@ -89,6 +89,16 @@ const pool = require("./pool")
     return result.rows[0];
   }
 
+  async function updateGrocery(id, item, price, quantity, categoryid) {
+    await pool.query(
+      `UPDATE groceries
+       SET item = $1, price = $2, quantity = $3, categoryid = $4
+       WHERE id = $5`,
+      [item, price, quantity, categoryid, id]
+    );
+  }
+  
+
   module.exports = {
       getAllGroceries,
       insertGroceries,
@@ -98,5 +108,6 @@ const pool = require("./pool")
       getCatergoriesAndGroceries,
       insertCategories,
       deleteGrocery,
-      getGroceryById
+      getGroceryById,
+      updateGrocery
   };

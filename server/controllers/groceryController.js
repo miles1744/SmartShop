@@ -134,5 +134,22 @@ console.log("Extracted fields:", item, price, quantity, categoryid);
       res.status(500).json({ error: "Server error" });
     }
   };
+
+
+  exports.updateGrocery = async (req, res) => {
+    const id = parseInt(req.params.id);
+    const { item, price, quantity, categoryid } = req.body;
   
+    if (!item || !price || !quantity || !categoryid) {
+      return res.status(400).json({ error: "Missing required fields" });
+    }
+  
+    try {
+      await db.updateGrocery(id, item, price, quantity, categoryid);
+      res.status(200).json({ message: "Grocery updated successfully" });
+    } catch (err) {
+      console.error("Error updating grocery:", err);
+      res.status(500).json({ error: "Internal Server Error" });
+    }
+  };
   

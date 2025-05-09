@@ -42,6 +42,9 @@ const CategoriesList = () => {
       };
       
 
+      const handleUpdate = (categoryId) => {
+        navigate(`/categories/update/${categoryId}`);
+      };
     
 
       return (<div className="category-container">
@@ -56,7 +59,7 @@ const CategoriesList = () => {
 
                         <div className="options-bar"> 
                             <p className="view" onClick={() => handleView(category.id)}>View</p>
-                            <p className="edit">Edit</p>
+                            <p className="edit" onClick={() => handleUpdate(category.id)}>Edit</p>
                             <p className="delete" onClick={() => handleDelete(category.id)}>Delete</p>
                         </div>
                     </div>

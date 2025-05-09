@@ -9,6 +9,8 @@ import CreateCategory from './CreateCategory.jsx';
 import CreateGrocery from './CreateGrocery.jsx';
 import ViewCategory from './ViewCategory.jsx';
 import ViewGrocery from './ViewGrocery.jsx';
+import UpdateCategory from './UpdateCategory.jsx';
+import UpdateGrocery from './UpdateGrocery.jsx';
 
 
 
@@ -24,6 +26,8 @@ createRoot(document.getElementById('root')).render(
         <Route path="/groceries/new" element={<CreateGrocery />} />
         <Route path="/categories/:id" element={<ViewCategory />} />
         <Route path="/groceries/:id" element={<ViewGrocery />} />
+        <Route path="/groceries/update/:id" element={<UpdateGrocery />} />
+        <Route path="/categories/update/:id" element={<UpdateCategory />}/>
 
       </Routes>
     </BrowserRouter>
