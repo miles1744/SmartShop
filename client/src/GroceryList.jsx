@@ -9,13 +9,10 @@ const GroceryList = () => {
     useEffect(() => {
         const fetchResults = async () => {
           try {
-    
             const res = await axios.get(`http://localhost:3000/groceries`);
             const data = res.data;
             console.log(data)
             setResults(data)
-
-    
           } catch (err) {
             console.error("Error fetching results:", err);
           }
