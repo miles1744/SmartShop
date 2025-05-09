@@ -12,7 +12,9 @@ const ViewCateogry = () => {
       const fetchCategory = async () => {
         try {
           const res = await axios.get(`http://localhost:3000/categories/${id}`);
+          console.log(res.data);
           setCategory(res.data);
+          
         } catch (err) {
           console.error("Failed to fetch category:", err);
         }
@@ -22,8 +24,9 @@ const ViewCateogry = () => {
     }, [id]);
 
     return (
-        <div>
-
+        <div className="category-detail">
+            <h1>Category: {category.name}</h1>
+            <p>Description: {category.description}</p>
         </div>
     )
 }

@@ -79,8 +79,8 @@ async function deleteGrocery(id) {
   
 
 
-  async function getItemById(id) {
-      const result = await pool.query("SELECT * FROM groceries WHERE id = $1", [id]);
+  async function getCategoryById(id) {
+      const result = await pool.query("SELECT * FROM categories WHERE id = $1", [id]);
       return result.rows
   }
 
@@ -88,7 +88,7 @@ module.exports = {
     getAllGroceries,
     insertGroceries,
     deleteCategory,
-    getItemById,
+    getCategoryById,
     getAllCategories,
     getCatergoriesAndGroceries,
     insertCategories,

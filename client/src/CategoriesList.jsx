@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
-import {Link} from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const CategoriesList = () => {
+
     const [results, setResults] = useState([]);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchResults = async () => {
@@ -34,6 +36,10 @@ const CategoriesList = () => {
           alert("Failed to delete category.");
         }
       };
+
+      const handleView = (categoryId) => {
+        navigate(`/categories/${categoryId}`);
+      };
       
 
     
@@ -49,7 +55,7 @@ const CategoriesList = () => {
                         <p key={category.id}>{category.name}</p>
 
                         <div className="options-bar"> 
-                            <p className="view">View</p>
+                            <p className="view" onClick={() => handleView(category.id)}>View</p>
                             <p className="edit">Edit</p>
                             <p className="delete" onClick={() => handleDelete(category.id)}>Delete</p>
                         </div>

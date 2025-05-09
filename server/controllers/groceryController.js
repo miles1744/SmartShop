@@ -27,16 +27,12 @@ exports.categoriesListGet = async (req, res) => {
     res.json(items);
 }
 
-exports.usersNewGet = async (req, res) => {
-    res.render("new") 
-}
-
-exports.getItemById = async (req, res) =>{
+exports.getCategoryById = async (req, res) =>{
 
     const id = parseInt(req.params.id);
 
     try {
-        const items = await db.getItemById(id); 
+        const items = await db.getCategoryById(id); 
         const item = items[0];
 
         if (!item) {
@@ -54,11 +50,6 @@ exports.getItemById = async (req, res) =>{
     }
 }
 
-exports.usersNewPost = async (req, res) => {
-    const { username } = req.body;
-    await db.insertUsername(username);
-    res.redirect("/");
-}
 
 
 exports.insertGroceries = async (req, res) => {
