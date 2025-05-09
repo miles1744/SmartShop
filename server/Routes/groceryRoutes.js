@@ -6,8 +6,7 @@ const groceriesRouter = Router();
 groceriesRouter.get("/categories", groceryController.categoriesListGet);
 groceriesRouter.get("/groceries", groceryController.groceryListGet)
 groceriesRouter.get("/search", groceryController.CategoriesAndGroceriesListGet)
-groceriesRouter.get("/categories/new", groceryController.usersNewGet);
-groceriesRouter.post("/groceries/new", groceryController.usersNewPost);
+groceriesRouter.post("/groceries/new", groceryController.insertGroceries);
 groceriesRouter.post("/delete", groceryController.deleteItem)
 
 

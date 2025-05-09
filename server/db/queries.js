@@ -47,8 +47,11 @@ async function getCatergoriesAndGroceries(searchTerm) {
 }
 
 
-async function insertGroceries(item) {
-    await pool.query("INSERT INTO groceries (item) VALUES ($1)", [item]);
+async function insertGroceries(item, price, quantity, categoryid) {
+  await pool.query(
+    "INSERT INTO groceries (item, price, quantity, categoryid) VALUES ($1, $2, $3, $4)",
+    [item, price, quantity, categoryid]
+  );
 }
 
 async function deleteGrocery(name) {

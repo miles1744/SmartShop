@@ -63,4 +63,26 @@ exports.usersNewPost = async (req, res) => {
 exports.deleteItem = async(req, res) => {
     await db.deleteUsers();
     res.redirect("/");
+
 }
+
+
+exports.insertGroceries = async (req, res) => {
+
+    const { item, price, quantity, categoryid } = req.body.newGrocery;
+console.log("Extracted fields:", item, price, quantity, categoryid);
+
+
+    if (!item || !price || !quantity || !categoryid) {
+      return res.status(400).json({ error: "Missing required fields" });
+    }
+  
+    try {
+      await db.insertGroceries(item, price, quantity, categoryid);
+      res.status(201).json({ message: "Grocery item inserted successfully!" });
+    } catch (err) {
+      console.error("Error inserting grocery:", err);
+      res.status(500).json({ error: "Internal Server Error" });
+    }
+  };
+  
