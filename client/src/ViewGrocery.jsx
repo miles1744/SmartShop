@@ -7,7 +7,7 @@ const ViewGrocery = () => {
   const [grocery, setGrocery] = useState(null);
 
   useEffect(() => {
-    const fetchCategory = async () => {
+    const fetchGrocery = async () => {
       try {
         const res = await axios.get(`http://localhost:3000/groceries/${id}`);
         console.log(res.data);
@@ -17,12 +17,10 @@ const ViewGrocery = () => {
       }
     };
 
-    fetchCategory();
+    fetchGrocery();
   }, [id]);
 
-  if (!category) {
-    return <p>Loading category...</p>;
-  }
+
 
   return (
     <>

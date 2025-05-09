@@ -117,4 +117,22 @@ console.log("Extracted fields:", item, price, quantity, categoryid);
     }
   };
   
+
+  exports.getGroceryById = async (req, res) => {
+    const id = parseInt(req.params.id);
+  
+    try {
+      const item = await db.getGroceryById(id);
+  
+      if (!item) {
+        return res.status(404).json({ error: "Grocery not found" });
+      }
+  
+      res.json(item);
+    } catch (err) {
+      console.error("Error fetching grocery:", err);
+      res.status(500).json({ error: "Server error" });
+    }
+  };
+  
   

@@ -9,8 +9,9 @@ groceriesRouter.get("/search", groceryController.CategoriesAndGroceriesListGet)
 groceriesRouter.post("/groceries/new", groceryController.insertGroceries);
 groceriesRouter.post("/categories/new", groceryController.insertCategories);
 groceriesRouter.post("/categories", groceryController.deleteCategory);
-groceriesRouter.post("/groceries", groceryController.deleteGroceries)
-groceriesRouter.get("/categories/:id", groceryController.getCategoryById)
+groceriesRouter.post("/groceries", groceryController.deleteGroceries);
+groceriesRouter.get("/categories/:id", groceryController.getCategoryById);
+groceriesRouter.get("/groceries/:id", groceryController.getGroceryById);
 
 
 module.exports = groceriesRouter;

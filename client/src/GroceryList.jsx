@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react"
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import axios from "axios";
 
 const GroceryList = () => {
 
     const [results, setResults] = useState([]);
+    const navigate = useNavigate();
+
 
     useEffect(() => {
         const fetchResults = async () => {
@@ -34,6 +36,9 @@ const GroceryList = () => {
         }
       };
     
+      const handleView = (groceryId) => {
+        navigate(`/groceries/${groceryId}`);
+      };
 
       return (<div className="grocery-container">
 
@@ -46,7 +51,7 @@ const GroceryList = () => {
                         <p key={grocery.id}>{grocery.item}</p>
 
                         <div className="options-bar"> 
-                            <p className="view">View</p>
+                            <p className="view" onClick={() => handleView(grocery.id)}>View</p>
                             <p className="edit">Edit</p>
                             <p className="delete" onClick={() => handleDelete(grocery.id)}>Delete</p>
                         </div>
