@@ -476,3 +476,11 @@ select {
     background-color: white;
     box-shadow: none;  
   }
+
+.category-detail  {
+    color:rgb(221, 230, 237);
+    background-color: rgb(39, 55, 77);
+    padding: 20px;
+    border-radius: 20px;
+    width: 500px;
+}

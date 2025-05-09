@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import axios from "axios";
 
 const ViewCategory = () => {
@@ -20,16 +20,23 @@ const ViewCategory = () => {
     fetchCategory();
   }, [id]);
 
-  // ✅ Guard clause: avoid accessing category.name while category is null
   if (!category) {
     return <p>Loading category...</p>;
   }
 
   return (
-    <div className="category-detail">
-      <h1>Category: {category.name}</h1>
-      <p>Description: {category.description}</p>
+    <>
+    <div className="category-container">
+        <div className="category-detail">
+          <h1>Category: {category.name}</h1>
+          <p>Description: {category.description}</p>
+        </div>
+
+        <Link to="/">
+          <button className="home-button">Home</button>
+        </Link>
     </div>
+    </>
   );
 };
 
