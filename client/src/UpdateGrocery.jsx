@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 
 const UpdateGrocery = () => {
@@ -74,6 +74,10 @@ const UpdateGrocery = () => {
             </select>
             <button type="submit">Update Grocery</button>
         </form>
+
+        <Link to="/">
+        <button className="home-button">Home</button>
+      </Link>
     </div>
   );
 };
