@@ -10,7 +10,7 @@ const ViewGrocery = () => {
     const fetchGrocery = async () => {
       try {
         const res = await axios.get(`http://localhost:3000/groceries/${id}`);
-        console.log(res.data);
+        console.log("Fetched grocery:", res.data);
         setGrocery(res.data);
       } catch (err) {
         console.error("Failed to fetch grocery:", err);
@@ -20,21 +20,23 @@ const ViewGrocery = () => {
     fetchGrocery();
   }, [id]);
 
-
+  if (!grocery) {
+    return 
+  }
 
   return (
-    <>
     <div className="grocery-container">
-        <div className="grocery-detail">
-          <h1>Category: {grocery.name}</h1>
-          <p>Description: {grocery.description}</p>
-        </div>
+      <div className="grocery-detail">
+        <h1>Item: {grocery.item}</h1>
+        <p>Price: ${grocery.price}</p>
+        <p>Quantity: ${grocery.quantity}</p>
+        
+      </div>
 
-        <Link to="/">
-          <button className="home-button">Home</button>
-        </Link>
+      <Link to="/">
+        <button className="home-button">Home</button>
+      </Link>
     </div>
-    </>
   );
 };
 

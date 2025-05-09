@@ -21,7 +21,7 @@ const ViewCategory = () => {
   }, [id]);
 
   if (!category) {
-    return <p>Loading category...</p>;
+    return 
   }
 
   return (
