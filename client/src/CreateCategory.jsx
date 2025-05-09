@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 const CreateCategory = () => {
 const [name, setName] = useState("");
@@ -10,8 +11,8 @@ const handleSubmit = async (e) => {
     e.preventDefault();
 
     const newCategory = {
-        name:name,
-        description:description
+        name,
+       description
       };
       
     try {
@@ -19,11 +20,9 @@ const handleSubmit = async (e) => {
         newCategory
       });
 
-      alert("Category item created!");
+      alert("Category created!");
       setItem("");
-      setPrice("");
-      setQuantity("");
-      setCategoryId("");
+      setDescription("");
     } catch (err) {
       console.error("Failed to create category:", err);
     }

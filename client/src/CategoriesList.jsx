@@ -23,6 +23,19 @@ const CategoriesList = () => {
         fetchResults();
       }, []);
 
+      const handleDelete = async (categoryId) => {
+        try {
+          await axios.post("http://localhost:3000/categories", {
+            id: categoryId,
+          });
+          setResults(prev => prev.filter(cat => cat.id !== categoryId));
+        } catch (err) {
+          console.error("Failed to delete category:", err);
+          alert("Failed to delete category.");
+        }
+      };
+      
+
     
 
       return (<div className="category-container">
@@ -38,7 +51,7 @@ const CategoriesList = () => {
                         <div className="options-bar"> 
                             <p className="view">View</p>
                             <p className="edit">Edit</p>
-                            <p className="delete">Delete</p>
+                            <p className="delete" onClick={() => handleDelete(category.id)}>Delete</p>
                         </div>
                     </div>
                 ))

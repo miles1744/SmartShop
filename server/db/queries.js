@@ -69,10 +69,10 @@ async function deleteGrocery(name) {
       );
   }
   
-  async function deleteCategory(name) {
+  async function deleteCategory(id) {
       await pool.query(
-        `DELETE FROM categories WHERE name ILIKE $1`,
-        [name]
+        `DELETE FROM categories WHERE id = $1`,
+        [id]
       )
   }
   

@@ -96,11 +96,28 @@ console.log("Extracted fields:", item, price, quantity, categoryid);
         }
       
         try {
-          await db.insertGroceries(name, description);
+          await db.insertCategories(name, description);
           res.status(201).json({ message: "Grocery item inserted successfully!" });
         } catch (err) {
           console.error("Error inserting grocery:", err);
           res.status(500).json({ error: "Internal Server Error" });
         }
   }
+ 
+  
+  exports.deleteCategory = async (req, res) => {
+    const { id } = req.body;
+  
+    if (!id) {
+      return res.status(400).json({ error: "Category name required" });
+    }
+  
+    try {
+      await db.deleteCategory(id);
+      res.status(200).json({ message: "Category deleted" });
+    } catch (err) {
+      console.error("Error deleting category:", err);
+      res.status(500).json({ error: "Server error" });
+    }
+  };
   
