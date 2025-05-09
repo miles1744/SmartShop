@@ -1,31 +1,43 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import axios from "axios";
 
-
 const ViewGrocery = () => {
+  const { id } = useParams();
+  const [grocery, setGrocery] = useState(null);
 
-    const { id } = useParams();
-    const [grocery, setGrocery] = useState(null);
-  
-    useEffect(() => {
-      const fetchCategory = async () => {
-        try {
-          const res = await axios.get(`http://localhost:3000/groceries/${id}`);
-          setGrocery(res.data);
-        } catch (err) {
-          console.error("Failed to fetch category:", err);
-        }
-      };
-  
-      fetchCategory();
-    }, [id]);
+  useEffect(() => {
+    const fetchCategory = async () => {
+      try {
+        const res = await axios.get(`http://localhost:3000/groceries/${id}`);
+        console.log(res.data);
+        setGrocery(res.data);
+      } catch (err) {
+        console.error("Failed to fetch grocery:", err);
+      }
+    };
 
-    return (
-        <div>
+    fetchCategory();
+  }, [id]);
 
+  if (!category) {
+    return <p>Loading category...</p>;
+  }
+
+  return (
+    <>
+    <div className="grocery-container">
+        <div className="grocery-detail">
+          <h1>Category: {grocery.name}</h1>
+          <p>Description: {grocery.description}</p>
         </div>
-    )
-}
+
+        <Link to="/">
+          <button className="home-button">Home</button>
+        </Link>
+    </div>
+    </>
+  );
+};
 
 export default ViewGrocery;
