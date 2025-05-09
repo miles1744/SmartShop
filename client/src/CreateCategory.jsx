@@ -5,6 +5,31 @@ const CreateCategory = () => {
 const [name, setName] = useState("");
 const [description, setDescription] = useState("")
 
+
+const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const newCategory = {
+        name:name,
+        description:description
+      };
+      
+    try {
+      await axios.post("http://localhost:3000/categories/new", {
+        newCategory
+      });
+
+      alert("Category item created!");
+      setItem("");
+      setPrice("");
+      setQuantity("");
+      setCategoryId("");
+    } catch (err) {
+      console.error("Failed to create category:", err);
+    }
+  };
+
+
     return (
         <div className="Create-Category-Container">
             <h1>Create a Category</h1>
