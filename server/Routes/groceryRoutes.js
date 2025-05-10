@@ -13,6 +13,8 @@ groceriesRouter.post("/groceries", groceryController.deleteGroceries);
 groceriesRouter.get("/categories/:id", groceryController.getCategoryById);
 groceriesRouter.get("/groceries/:id", groceryController.getGroceryById);
 groceriesRouter.put("/groceries/:id", groceryController.updateGrocery);
+groceriesRouter.put("/categories/:id", groceryController.updateCategory);
+
 
 
 module.exports = groceriesRouter;

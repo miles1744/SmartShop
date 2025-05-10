@@ -152,4 +152,21 @@ console.log("Extracted fields:", item, price, quantity, categoryid);
       res.status(500).json({ error: "Internal Server Error" });
     }
   };
+
+  exports.updateCategory = async (req, res) => {
+    const id = parseInt(req.params.id);
+    const { name, description } = req.body;
+  
+    if (!name || !description) {
+      return res.status(400).json({ error: "Missing required fields" });
+    }
+  
+    try {
+      await db.updateCategory(id, name, description);
+      res.status(200).json({ message: "Category updated successfully" });
+    } catch (err) {
+      console.error("Error updating category:", err);
+      res.status(500).json({ error: "Internal Server Error" });
+    }
+  };
   

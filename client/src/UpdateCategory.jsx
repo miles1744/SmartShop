@@ -7,18 +7,16 @@ const UpdateCategory = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const [form, setForm] = useState({
-    item: "",
-    price: "",
-    quantity: "",
-    categoryid: ""
+    name: "",
+    description: ""
   });
 
   useEffect(() => {
-    const fetchGrocery = async () => {
-      const res = await axios.get(`http://localhost:3000/groceries/${id}`);
+    const fetchCategory = async () => {
+      const res = await axios.get(`http://localhost:3000/categories/${id}`);
       setForm(res.data);
     };
-    fetchGrocery();
+    fetchCategory();
   }, [id]);
 
   const handleChange = (e) => {
@@ -28,20 +26,18 @@ const UpdateCategory = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await axios.put(`http://localhost:3000/groceries/${id}`, form);
+    await axios.put(`http://localhost:3000/categories/${id}`, form);
     alert("Grocery updated!");
-    navigate("/groceries");
+    navigate("/categories");
   };
 
   return (
     <div>
         
         <form onSubmit={handleSubmit}>
-        <input name="item" value={form.item} onChange={handleChange} placeholder="Item" />
-        <input name="price" value={form.price} onChange={handleChange} placeholder="Price" />
-        <input name="quantity" value={form.quantity} onChange={handleChange} placeholder="Quantity" />
-        <input name="categoryid" value={form.categoryid} onChange={handleChange} placeholder="Category ID" />
-        <button type="submit">Update Grocery</button>
+        <input name="name" value={form.name} onChange={handleChange} placeholder="Name" />
+        <input name="description" value={form.description} onChange={handleChange} placeholder="Description" />
+        <button type="submit">Update Category</button>
         </form>
     </div>
   );
