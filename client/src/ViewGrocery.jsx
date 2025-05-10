@@ -28,6 +28,7 @@ const ViewGrocery = () => {
         const res = await axios.get(`http://localhost:3000/categories`);
         console.log("Fetched category:", res.data);
         setCategory(res.data);
+        setCategory(category.filter(cat => cat.id === grocery.categeroyId))
       } catch (err) {
         console.error("Failed to fetch category:", err);
       }
