@@ -101,7 +101,7 @@ const pool = require("./pool")
 
   async function updateCategory(id, name, description) {
     await pool.query(
-      `UPDATE groceries
+      `UPDATE categories
        SET name = $1, description = $2 WHERE id = $3`,
       [name, description, id]
     );

@@ -530,9 +530,53 @@ select {
     color: rgb(39, 55, 77);
     background-color: rgb(221, 230, 237);
     transition: 0.25s border;
+    cursor: pointer;
 }
 
 .update-container {
     text-align: center;
     color: rgb(39, 55, 77);
+}
+
+.category-form{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    justify-content: center;
+    align-items: center;
+}
+
+.category-form input{
+    width: 400px;
+    background-color: rgb(221, 230, 237);
+    border: none;
+    border-radius: 10px;
+    padding: 10px;
+    color: rgb(39, 55, 77);
+    transition: border 0.25s;
+}
+
+.category-form input:focus{
+    border: 2px solid rgb(39, 55, 77);  
+}
+
+.category-form input::placeholder{
+    color: rgb(39, 55, 77);
+}
+
+.category-form select{
+    background-color: rgb(221, 230, 237);
+
+    color: rgb(39, 55, 77);
+}
+
+.category-form button{
+    padding: 15px;
+    font-size: 24px;
+    border: none;
+    border-radius: 15px;
+    color: rgb(39, 55, 77);
+    background-color: rgb(221, 230, 237);
+    transition: 0.25s border;
+    cursor: pointer;
 }

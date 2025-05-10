@@ -1,6 +1,6 @@
 
 import { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 
 const UpdateCategory = () => {
@@ -27,18 +27,24 @@ const UpdateCategory = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     await axios.put(`http://localhost:3000/categories/${id}`, form);
-    alert("Grocery updated!");
+    alert("Cateogry updated!");
     navigate("/categories");
   };
 
   return (
-    <div>
+    <div className="update-container">
         
-        <form onSubmit={handleSubmit}>
-        <input name="name" value={form.name} onChange={handleChange} placeholder="Name" />
-        <input name="description" value={form.description} onChange={handleChange} placeholder="Description" />
-        <button type="submit">Update Category</button>
+        <form onSubmit={handleSubmit} className="category-form">
+          <label>Name:</label>
+          <input name="name" value={form.name} onChange={handleChange} placeholder="Name" />
+          <label>Description:</label>
+          <input name="description" value={form.description} onChange={handleChange} placeholder="Description" />
+          <button type="submit">Update Category</button>
         </form>
+
+      <Link to="/">
+        <button className="home-button">Home</button>
+      </Link>
     </div>
   );
 };
