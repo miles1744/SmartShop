@@ -34,7 +34,7 @@ const ViewGrocery = () => {
     };
 
     fetchCategories();
-  }, [id]);
+  }, []);
 
   if (!grocery) {
     return 
