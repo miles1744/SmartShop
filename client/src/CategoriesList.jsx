@@ -29,7 +29,7 @@ const CategoriesList = () => {
 
       const handleDelete = async (categoryId) => {
         try {
-          await axios.post(`${API_BASE}/categories${categoryId}`, {
+          await axios.post(`${API_BASE}/categories/${categoryId}`, {
             id: categoryId,
           });
           setResults(prev => prev.filter(cat => cat.id !== categoryId));
