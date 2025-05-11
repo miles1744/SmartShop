@@ -18,9 +18,9 @@ const handleSubmit = async (e) => {
       };
       
     try {
-      await axios.post(`${API_BASE}/categories/new`, {
+      await axios.post(`${API_BASE}/categories/new`, 
         newCategory
-      });
+      );
 
       alert("Category created!");
       setItem("");
