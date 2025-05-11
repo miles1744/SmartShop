@@ -85,32 +85,33 @@ console.log("Extracted fields:", item, price, quantity, categoryid);
  
   
   exports.deleteCategory = async (req, res) => {
-    const { id } = req.body;
+    const id = parseInt(req.params.id);
   
     if (!id) {
-      return res.status(400).json({ error: "Category name required" });
+      return res.status(400).json({ error: "Category ID required" });
     }
   
     try {
       await db.deleteCategory(id);
-      res.status(200).json({ message: "Category deleted" });
+      res.sendStatus(204); // No content
     } catch (err) {
       console.error("Error deleting category:", err);
       res.status(500).json({ error: "Server error" });
     }
   };
+  
 
 
   exports.deleteGroceries = async (req, res) => {
-    const { id } = req.body;
+    const id = parseInt(req.params.id);
   
     if (!id) {
-      return res.status(400).json({ error: "Grocery name required" });
+      return res.status(400).json({ error: "Grocery ID required" });
     }
   
     try {
       await db.deleteGrocery(id);
-      res.status(200).json({ message: "Grocery deleted" });
+      res.sendStatus(204); // No content
     } catch (err) {
       console.error("Error deleting grocery:", err);
       res.status(500).json({ error: "Server error" });

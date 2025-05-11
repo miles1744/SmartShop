@@ -28,9 +28,7 @@ const GroceryList = () => {
 
       const handleDelete = async (groceryId) => {
         try {
-          await axios.post(`${API_BASE}/groceries`, {
-            id: groceryId,
-          });
+          await axios.delete(`${API_BASE}/categories/${categoryId}`);
           setResults(prev => prev.filter(cat => cat.id !== groceryId));
         } catch (err) {
           console.error("Failed to delete category:", err);
