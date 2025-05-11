@@ -41,7 +41,7 @@ useEffect(() => {
       };
       
     try {
-      await axios.post("http://localhost:3000/groceries/new", {
+      await axios.post(`${API_BASE}/groceries/new`, {
         newGrocery
       });
 
