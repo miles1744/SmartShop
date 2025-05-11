@@ -25,7 +25,7 @@ const ViewGrocery = () => {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const res = await axios.get(`http://localhost:3000/categories`);
+        const res = await axios.get(`${API_BASE}/categories`);
         setCategories(res.data);
       } catch (err) {
         console.error("Failed to fetch categories:", err);

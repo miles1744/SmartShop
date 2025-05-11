@@ -37,7 +37,7 @@ const UpdateGrocery = () => {
 
   useEffect(() => {
     const fetchGrocery = async () => {
-      const res = await axios.get(`http://localhost:3000/groceries/${id}`);
+      const res = await axios.get(`${API_BASE}/groceries/${id}`);
       setForm(res.data);
     };
     fetchGrocery();
@@ -50,7 +50,7 @@ const UpdateGrocery = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await axios.put(`http://localhost:3000/groceries/${id}`, form);
+    await axios.put(`${API_BASE}/groceries/${id}`, form);
     alert("Grocery updated!");
     navigate("/groceries");
   };

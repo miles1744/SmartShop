@@ -28,7 +28,7 @@ const UpdateCategory = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await axios.put(`http://localhost:3000/categories/${id}`, form);
+    await axios.put(`${API_BASE}/categories/${id}`, form);
     alert("Cateogry updated!");
     navigate("/categories");
   };
