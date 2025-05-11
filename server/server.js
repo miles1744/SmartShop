@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const groceryRoutes = require("./routes/groceryRoutes");
+const groceryRoutes = require("./routes/groceryroutes.js");
 const cors = require("cors");
 
 const corsOptions = {
