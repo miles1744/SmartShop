@@ -28,7 +28,7 @@ const GroceryList = () => {
 
       const handleDelete = async (groceryId) => {
         try {
-          await axios.post("http://localhost:3000/groceries", {
+          await axios.post(`${API_BASE}/groceries`, {
             id: groceryId,
           });
           setResults(prev => prev.filter(cat => cat.id !== groceryId));
