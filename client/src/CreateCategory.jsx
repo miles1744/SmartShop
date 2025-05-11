@@ -23,7 +23,7 @@ const handleSubmit = async (e) => {
       );
 
       alert("Category created!");
-      setItem("");
+      setName("");
       setDescription("");
     } catch (err) {
       console.error("Failed to create category:", err);
@@ -42,7 +42,7 @@ const handleSubmit = async (e) => {
 
                 <div>
                     <label>Description:</label>
-                    <textarea name="name" onChange={(e) => {setDescription(e.target.value)}} value={description} placeholder="Write the description here..." required/>
+                    <textarea name="description" onChange={(e) => {setDescription(e.target.value)}} value={description} placeholder="Write the description here..." required/>
                 </div>
 
                 <button>Create a new category</button>
