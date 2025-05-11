@@ -2,6 +2,8 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import axios from "axios";
+const API_BASE = import.meta.env.VITE_BACKEND_URL;
+
 
 const UpdateCategory = () => {
   const { id } = useParams();
@@ -13,7 +15,7 @@ const UpdateCategory = () => {
 
   useEffect(() => {
     const fetchCategory = async () => {
-      const res = await axios.get(`http://localhost:3000/categories/${id}`);
+      const res = await axios.get(`${API_BASE}/categories/${id}`);
       setForm(res.data);
     };
     fetchCategory();

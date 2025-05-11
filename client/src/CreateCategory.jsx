@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+const API_BASE = import.meta.env.VITE_BACKEND_URL;
+
 
 const CreateCategory = () => {
 const [name, setName] = useState("");
@@ -16,7 +18,7 @@ const handleSubmit = async (e) => {
       };
       
     try {
-      await axios.post("http://localhost:3000/categories/new", {
+      await axios.post(`${API_BASE}/categories/new`, {
         newCategory
       });
 

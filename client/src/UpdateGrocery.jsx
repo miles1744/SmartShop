@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import axios from "axios";
+const API_BASE = import.meta.env.VITE_BACKEND_URL;
+
 
 const UpdateGrocery = () => {
   const { id } = useParams();
@@ -18,7 +20,7 @@ const UpdateGrocery = () => {
     const fetchResults = async () => {
       try {
 
-        const res = await axios.get(`http://localhost:3000/categories`);
+        const res = await axios.get(`${API_BASE}/categories`);
         const data = res.data;
         console.log(data)
         setResults(data)

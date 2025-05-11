@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import axios from "axios";
 import "./App.css"
+const API_BASE = import.meta.env.VITE_BACKEND_URL;
+
 
 const SearchInfo = () => {
   const location = useLocation();
@@ -15,7 +17,7 @@ const SearchInfo = () => {
       if (!term) return;
       try {
 
-        const res = await axios.get(`http://localhost:3000/search?term=${encodeURIComponent(term)}`);
+        const res = await axios.get(`${API_BASE}/search?term=${encodeURIComponent(term)}`);
         const data = res.data;
 
         const cat = [...new Set(data.map(item => item.category))];

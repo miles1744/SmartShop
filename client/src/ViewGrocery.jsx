@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import axios from "axios";
+const API_BASE = import.meta.env.VITE_BACKEND_URL;
+
 
 const ViewGrocery = () => {
   const { id } = useParams();
@@ -10,7 +12,7 @@ const ViewGrocery = () => {
   useEffect(() => {
     const fetchGrocery = async () => {
       try {
-        const res = await axios.get(`http://localhost:3000/groceries/${id}`);
+        const res = await axios.get(`${API_BASE}/groceries/${id}`);
         setGrocery(res.data);
       } catch (err) {
         console.error("Failed to fetch grocery:", err);

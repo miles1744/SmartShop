@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import axios from "axios";
+const API_BASE = import.meta.env.VITE_BACKEND_URL;
+
 
 const ViewCategory = () => {
   const { id } = useParams();
@@ -9,7 +11,7 @@ const ViewCategory = () => {
   useEffect(() => {
     const fetchCategory = async () => {
       try {
-        const res = await axios.get(`http://localhost:3000/categories/${id}`);
+        const res = await axios.get(`${API_BASE}/categories/${id}`);
         console.log(res.data);
         setCategory(res.data);
       } catch (err) {

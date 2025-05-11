@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+const API_BASE = import.meta.env.VITE_BACKEND_URL;
+
 
 const CreateGrocery = () => {
 const [item, setItem] = useState("");
@@ -14,7 +16,7 @@ useEffect(() => {
     const fetchResults = async () => {
       try {
 
-        const res = await axios.get(`http://localhost:3000/categories`);
+        const res = await axios.get(`${API_BASE}/categories`);
         const data = res.data;
         console.log(data)
         setResults(data)

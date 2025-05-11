@@ -6,18 +6,14 @@ import "./App.css"
 
 
 
+
 const App = () => {
   const [searchTerm, setSearchTerm] = useState("")
   const navigate = useNavigate();
-
   const handleSearch = () => {
     navigate(`/search?term=${encodeURIComponent(searchTerm)}`);
   };
 
-  const fetchAPI = async () => {
-    const response = await axios.get("http://localhost:3000")
-    console.log(response.data)
-  };
 
   return(
     <div className="shop-container">
